@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <script
+      src="https://kit.fontawesome.com/1a11e246e6.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Frontend Mentor | Time tracking dashboard</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      /*
+      Report for
+      Jeremy Robson
+
+      Daily
+      Weekly
+      Monthly
+
+     
+
+       Play
+      1hr <!-- daily -->
+      Previous - 2hrs <!-- daily -->
+      10hrs <!-- weekly -->
+      Previous - 8hrs <!-- weekly -->
+      23hrs <!-- monthly -->
+      Previous - 29hrs <!-- monthly -->
+
+      Study
+      0hrs <!-- daily -->
+      Previous - 1hr <!-- daily -->
+      4hrs <!-- weekly -->
+      Previous - 7hrs <!-- weekly -->
+      13hrs <!-- monthly -->
+      Previous - 19hrs <!-- monthly -->
+
+      Exercise
+      1hr <!-- daily -->
+      Previous - 1hr <!-- daily -->
+      4hrs <!-- weekly -->
+      Previous - 5hrs <!-- weekly -->
+      11hrs <!-- monthly -->
+      Previous - 18hrs <!-- monthly -->
+
+      Social
+      1hr <!-- daily -->
+      Previous - 3hrs <!-- daily -->
+      5hrs <!-- weekly -->
+      Previous - 10hrs <!-- weekly -->
+      21hrs <!-- monthly -->
+      Previous - 23hrs <!-- monthly -->
+
+      Self Care
+      0hrs <!-- daily -->
+      Previous - 1hr <!-- daily -->
+      2hrs <!-- weekly -->
+      Previous - 2hrs <!-- weekly -->
+      7hrs <!-- monthly -->
+      Previous - 11hrs <!-- monthly -->
+    */
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="card user">
+        <div class="user-details">
+          <div class="user-image">
+            <img src="images/image-jeremy.png" alt="Jeremy Image" />
+          </div>
+          <small>Report for</small>
+          <p>Jermey Robson</p>
+        </div>
+        <ul>
+          <li id="day">Daily</li>
+          <li id="week" class="active">Weekly</li>
+          <li id="month">Monthly</li>
+        </ul>
+      </div>
+      <div class="card work" day="5,7" week="32,36" month="103,128">
+        <span class="title">Work <i class="fa-solid fa-ellipsis"></i></span>
+        <p class="current"><span class="number">32</span>hrs</p>
+        <small>Last Week - 36hrs</small>
+      </div>
+      <div class="card play" day="1,2" week="10,8" month="23,29">
+        <span class="title">Play<i class="fa-solid fa-ellipsis"></i></span>
+        <p class="current"><span class="number">10</span>hrs</p>
+        <small>Last Week - 8hrs</small>
+      </div>
+      <div class="card study" day="0,1" week="4,7" month="13,19">
+        <span class="title">Study <i class="fa-solid fa-ellipsis"></i></span>
+        <p class="current"><span class="number">4</span>hrs</p>
+        <small>Last Week - 19hrs</small>
+      </div>
+      <div class="card exercise" day="1,1" week="4,5" month="11,18">
+        <span class="title">Exercise <i class="fa-solid fa-ellipsis"></i></span>
+        <p class="current"><span class="number">4</span>hrs</p>
+        <small>Last Week - 5hrs</small>
+      </div>
+      <div class="card social" day="1,3" week="5,10" month="21,23">
+        <span class="title">Social <i class="fa-solid fa-ellipsis"></i></span>
+        <p class="current"><span class="number">5</span>hrs</p>
+        <small>Last Week - 10hrs</small>
+      </div>
+      <div class="card self-care" day="0,1" week="2,2" month="7,11">
+        <span class="title">Self Care
+          <i class="fa-solid fa-ellipsis"></i></span>
+        <p class="current"><span class="number">2</span>hrs</p>
+        <small>Last Week - 2hrs</small>
+      </div>
+    </main>
+  </body>
+  <script>
+    let lis = document.querySelectorAll('.user ul li');
+    let cards = document.querySelectorAll('.card:not(.user)');
+    lis.forEach((li)=>{
+      li.addEventListener('click',function(){
+        if(!li.classList.contains('active'))
+        {
+          let active = document.querySelector('.user ul li.active');
+          active.classList.remove('active');
+          li.classList.add('active');
+          let id = li.id;
+          cards.forEach((card)=>{
+            let durations = card.getAttribute(id).split(',');
+            let current = durations[0];
+            let previous = durations[1];
+            console.log(card.getAttribute(active.id));
+            let differ = card.getAttribute(active.id).split(',')[0]; 
+            
+            card.children[1].getElementsByClassName('number')[0].textContent = `${current}`;
+            card.children[2].textContent = `Last ${id} - ${previous}hrs`;
+          })
+        }
+        
+        
+      })
+    })
+</script>
+</html>

@@ -1,0 +1,146 @@
+:root{
+    --Blue: hsl(246, 80%, 60%);
+    --Light-red-work: hsl(15, 100%, 70%);
+    --Soft-blue-play: hsl(195, 74%, 62%);
+    --Light-red-study: hsl(348, 100%, 68%);
+    --Lime-green-exercise: hsl(145, 58%, 55%);
+    --Violet-social: hsl(264, 64%, 52%);
+    --Soft-orange-self-care: hsl(43, 84%, 65%);
+    --Very-dark-blue: hsl(226, 43%, 10%);
+    --Dark-blue: hsl(235, 46%, 20%);
+    --Desaturated-blue: hsl(235, 45%, 61%);
+    --Pale-Blue: hsl(236, 100%, 87%);
+}
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Rubik', sans-serif;
+    min-height: 100vh;
+    background-color: var(--Very-dark-blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ul{
+    list-style-type: none;
+}
+img{
+    width: 100%;
+}
+main{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+    gap:60px 15px;
+    width: 60%;
+}
+.card{
+    background-color: var(--Dark-blue);
+    color:white;
+    border-radius: 15px;
+    padding:30px;
+    position: relative;
+    transition:0.3s;
+}
+.card:not(.user):hover{
+    background-color: #34397b;
+}
+.card:not(.user)::before{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: -45px;
+    border-radius: 15px;
+    background-color: var(--Blue);
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-position: right top;
+}
+.work::before{
+    background-image: url(images/icon-work.svg);
+    background-color: var(--Light-red-work) !important;
+}
+.play::before{
+    background-image: url(images/icon-play.svg);
+    background-color: var(--Soft-blue-play) !important;
+}
+.exercise::before{
+    background-image: url(images/icon-exercise.svg);
+    background-color: var(--Lime-green-exercise) !important;
+}
+.study::before{
+    background-image: url(images/icon-study.svg);
+    background-color: var(--Light-red-study) !important;
+}
+.social::before{
+    background-image: url(images/icon-social.svg);
+    background-color: var(--Violet-social) !important;
+}
+.self-care::before{
+    background-image: url(images/icon-self-care.svg);
+    background-color: var(--Soft-orange-self-care) !important;
+}
+.user {
+    grid-row:span 2; /* Spans from the first to the last row */
+    padding:0;
+}
+.user .user-details{
+    background-color: var(--Blue);
+    border-radius: 15px;
+    padding: 30px 20px 50px;
+}
+.user .user-details .user-image{
+    width: 70px;
+    margin-bottom:40px;
+}
+.user ul{
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+    padding:20px;
+}
+.user ul li{
+    color:white;
+    cursor:pointer;
+    transition: 0.3s;
+}
+.user ul li:not(.active){
+    color:var(--Desaturated-blue);
+}
+.user ul li:hover{
+    color:white;
+}
+.user .user-image img{
+    border: 2px solid white;
+    border-radius: 50%;
+}
+.card span.title {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+}
+.card span.title i{
+    color:var(--Pale-Blue);
+    transition:0.3s;
+    cursor: pointer;
+}
+.card span.title i:hover{
+    color:white;
+}
+.card p{
+    font-size: 40px;
+    font-weight: 300;
+}
+.card p.current
+{
+    margin-top:30px;
+    margin-bottom:20px;
+}
+.card small{
+    color: var(--Soft-blue-play);
+}
