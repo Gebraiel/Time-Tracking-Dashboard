@@ -24,58 +24,7 @@
     <title>Frontend Mentor | Time tracking dashboard</title>
 
     <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-    <style>
-      /*
-      Report for
-      Jeremy Robson
-
-      Daily
-      Weekly
-      Monthly
-
-     
-
-       Play
-      1hr <!-- daily -->
-      Previous - 2hrs <!-- daily -->
-      10hrs <!-- weekly -->
-      Previous - 8hrs <!-- weekly -->
-      23hrs <!-- monthly -->
-      Previous - 29hrs <!-- monthly -->
-
-      Study
-      0hrs <!-- daily -->
-      Previous - 1hr <!-- daily -->
-      4hrs <!-- weekly -->
-      Previous - 7hrs <!-- weekly -->
-      13hrs <!-- monthly -->
-      Previous - 19hrs <!-- monthly -->
-
-      Exercise
-      1hr <!-- daily -->
-      Previous - 1hr <!-- daily -->
-      4hrs <!-- weekly -->
-      Previous - 5hrs <!-- weekly -->
-      11hrs <!-- monthly -->
-      Previous - 18hrs <!-- monthly -->
-
-      Social
-      1hr <!-- daily -->
-      Previous - 3hrs <!-- daily -->
-      5hrs <!-- weekly -->
-      Previous - 10hrs <!-- weekly -->
-      21hrs <!-- monthly -->
-      Previous - 23hrs <!-- monthly -->
-
-      Self Care
-      0hrs <!-- daily -->
-      Previous - 1hr <!-- daily -->
-      2hrs <!-- weekly -->
-      Previous - 2hrs <!-- weekly -->
-      7hrs <!-- monthly -->
-      Previous - 11hrs <!-- monthly -->
-    */
-    </style>
+    <style></style>
   </head>
   <body>
     <main>
@@ -119,38 +68,38 @@
         <small>Last Week - 10hrs</small>
       </div>
       <div class="card self-care" day="0,1" week="2,2" month="7,11">
-        <span class="title">Self Care
-          <i class="fa-solid fa-ellipsis"></i></span>
+        <span class="title"
+          >Self Care <i class="fa-solid fa-ellipsis"></i
+        ></span>
         <p class="current"><span class="number">2</span>hrs</p>
         <small>Last Week - 2hrs</small>
       </div>
     </main>
   </body>
   <script>
-    let lis = document.querySelectorAll('.user ul li');
-    let cards = document.querySelectorAll('.card:not(.user)');
-    lis.forEach((li)=>{
-      li.addEventListener('click',function(){
-        if(!li.classList.contains('active'))
-        {
-          let active = document.querySelector('.user ul li.active');
-          active.classList.remove('active');
-          li.classList.add('active');
+    let lis = document.querySelectorAll(".user ul li");
+    let cards = document.querySelectorAll(".card:not(.user)");
+    lis.forEach((li) => {
+      li.addEventListener("click", function () {
+        if (!li.classList.contains("active")) {
+          let active = document.querySelector(".user ul li.active");
+          active.classList.remove("active");
+          li.classList.add("active");
           let id = li.id;
-          cards.forEach((card)=>{
-            let durations = card.getAttribute(id).split(',');
+          cards.forEach((card) => {
+            let durations = card.getAttribute(id).split(",");
             let current = durations[0];
             let previous = durations[1];
             console.log(card.getAttribute(active.id));
-            let differ = card.getAttribute(active.id).split(',')[0]; 
-            
-            card.children[1].getElementsByClassName('number')[0].textContent = `${current}`;
+            let differ = card.getAttribute(active.id).split(",")[0];
+
+            card.children[1].getElementsByClassName(
+              "number"
+            )[0].textContent = `${current}`;
             card.children[2].textContent = `Last ${id} - ${previous}hrs`;
-          })
+          });
         }
-        
-        
-      })
-    })
-</script>
+      });
+    });
+  </script>
 </html>
